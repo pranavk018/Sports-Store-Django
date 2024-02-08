@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block 'main' %}
+        <!-- main content -->       
+                <!-- main content -->
+                <div class="row">
+                    <div class="col-md-6 mt-5 mx-auto shadow p-3 mb-5 bg-body rounded">
+                    <h2>Registration</h2>
+                    <form action="register" method="post">
+                        {% if errorMsg %}
+                        <div class="alert alert-danger">
+                            {{ errorMsg }}
+                        </div>
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Username:</strong></label>
+                            <input type="email" class="form-control" 
+                                placeholder="name@example.com" name="uname"
+                            >
+                        </div>
+                        <div class="mb-3">
+                            <label for="input2" class="form-label"><strong>Password:</strong></label>
+                            <input type="password" class="form-control"
+                                id="input2" name="upass"
+                                placeholder="enter your password(atleast 8 characters)"
+                            >
+                        </div>
+                        <div class="mb-3">
+                            <label for="input3" class="form-label"><strong>Confirm Password:</strong></label>
+                            <input type="password" class="form-control" 
+                            id="input3" name="cpass"
+                            placeholder="please reenter the password" >
+                        </div>
+                        <button type="submit" class="btn btn-danger">Register</button>
+                        &nbsp;&nbsp; Already a user? <a class="anchor" href="/login" >Sign In</a>
+                    </form>
+                </div>
+                 
+{% endblock 'main' %}

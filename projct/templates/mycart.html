@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block 'main' %}
+        <!-- main content -->       
+                <!-- main content -->
+                <div class="row"> <!-- ROW 1 -->
+                  <!-- prod 1 start -->
+                  <div class="col-md-8 mt-2"> <!-- row 1 col 1-->  
+                    <h5 class="bg-danger text-white">Cart Details</h5>                  
+                    {% for cart in mycart %}                   
+                    <div class="row"> <!-- row 2-->
+                        <div class="col-md-6"> <!-- row 2 col 1-->
+                            <img src="{{ product.pimage.url }}" width="100%" height="150px" class="card-img-top"   alt="...">
+                        </div><!-- row 2 col 1 end -->
+                        <div class="col-md-6 my-1"> <!-- row 2 col 2 -->
+                                <h5 >{{ cart.pid.name }}</h5>
+                                <p ><strong>Price: Rs. {{ cart.pid.price }}</strong></p>
+                                {% if cart.pid.cat == 1 %}
+                                <p class="card-text">Cricket</p>
+                                {% elif cart.pid.cat == 2 %}
+                                <p class="card-text">Football</p>
+                                {% else %}
+                                <p class="card-text">Swimming</p>
+                                {% endif %}
+                                <p class="card-text">{{cart.pid.details}}</p>
+                                {% if cart.quantity > 1%}
+                                <a href="/updateqty/0/{{cart.id}}" class="btn btn-danger" >-</a>
+                                {% endif %}
+                                <input type="text" readonly style="width:50px;" value={{ cart.quantity }}>
+                                <a href="/updateqty/1/{{cart.id}}" class="btn btn-danger">+</a>      
+                                <a href="/deletecart/{{cart.id}}" class="btn btn-danger">Remove</a>                   
+                              </div> <!-- ro2 col 2 end -->
+                        </div> <!-- row 2 end  -->
+                         
+                        {% endfor %}    
+                                           
+                      </div> <!-- -->
+                      <div class="col-md-4 mt-2" >
+                        <h5 class="bg-danger text-white">Bill Details</h5>  
+                        <strong stye="color:red;">Total Products: </strong>  {{ count }} <br>
+                        <strong>Payable Amount: </strong> Rs.{{ billAmount }} <br><br>
+                          <a href="/placeorder" class="btn btn-danger">Place Order</a> 
+                    </div> 
+                                       
+                  </div> <!-- end of prod 1 -->   
+                  
+                  </div>   
+                     
+                                     
+{% endblock 'main' %}

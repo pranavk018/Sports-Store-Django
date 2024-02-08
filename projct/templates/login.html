@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block 'main' %}
+        <!-- main content -->       
+                <!-- main content -->
+                <div class="row">
+                    <div class="col-md-4 mt-5 mx-auto shadow p-3 mb-5 bg-body rounded">
+                        <div class="row">
+                            <h2>Login</h2>
+                            {% if success %}
+                                <div class="alert alert-success">
+                                    {{ success }}
+                                </div>
+                            {% endif %}
+                            {% if errorMsg %}
+                                <div class="alert alert-danger">
+                                    {{ errorMsg }}
+                                </div>
+                            {% endif %}
+                            <form action="login" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label class="form-label"><strong>Username:</strong></label>
+                                    <input type="email" class="form-control" 
+                                     placeholder="name@example.com" name="uname">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input2" class="form-label"><strong>Password:</strong></label>
+                                    <input type="password" class="form-control" name="upass"
+                                    id="input2" placeholder="enter your password(atleast 8 characters)">
+                                </div>
+                                <button type="submit" class="btn btn-danger">Login</button>
+                                &nbsp;&nbsp;&nbsp; Not a user? <a href="/register" style="text-decoration: none;">Sign Up</a>
+                            </form>
+                        </div> 
+                 
+{% endblock 'main' %}

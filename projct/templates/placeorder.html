@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block 'main' %}
+        <!-- main content -->       
+                <!-- main content -->
+                <div class="row"> <!-- ROW 1 -->
+                  <!-- prod 1 start -->
+                  <div class="col-md-8 mt-2"> <!-- row 1 col 1-->  
+                    <h5 class="bg-danger text-white">Order Details</h5>                  
+                    {% for cart in mycart %}                   
+                    <div class="row"> <!-- row 2-->
+                        <div class="col-md-6"> <!-- row 2 col 1-->
+                            <img src="{{ cart.sid.pimage.url }}" width="100%" height="150px" class="card-img-top"   alt="...">
+                        </div><!-- row 2 col 1 end -->
+                        <div class="col-md-6 my-1"> <!-- row 2 col 2 -->
+                                <h5 >{{ cart.sid.name }}</h5>
+                                <p ><strong>Price: Rs. {{ cart.sid.price }}</strong></p>                           
+                                Quantity: {{ cart.quantity }}                                
+                              </div> <!-- ro2 col 2 end -->
+                        </div> <!-- row 2 end  -->
+                         
+                        {% endfor %}    
+                                           
+                      </div> <!-- -->
+                      <div class="col-md-4 mt-2" >
+                        <h5 class="bg-danger text-white">Bill Details</h5>  
+                        <strong stye="color:red;">Total Products: </strong>  {{ count }} <br>
+                        <strong>Payable Amount: </strong> Rs.{{ billAmount }} <br><br>
+                          <a href="/makepayment" class="btn btn-danger">Make Payment</a> 
+                    </div> 
+                                       
+                  </div> <!-- end of prod 1 -->   
+                  
+                  </div>   
+                     
+                                     
+{% endblock 'main' %}

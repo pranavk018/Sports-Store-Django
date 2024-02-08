@@ -1,0 +1,13 @@
+<!-- header  -->
+{% include 'header.html' %}
+<!-- main content  -->
+{% include 'content.html' %} <!--left sidebar -->
+    <div class="col-md-9 mt-2  p-3">
+        <!-- page specific content area  -->
+        {% block 'main' %}
+        {% endblock 'main' %}
+        <!-- end of page specific content  -->
+    </div>
+</div> <!-- end of main content --> 
+</div> <!-- end of 2nd row -->
+{% include 'footer.html' %}

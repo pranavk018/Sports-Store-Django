@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block 'main' %}
+        <!-- main content -->       
+                <!-- main content -->
+                <div class="row">
+                  <!-- prod 1 start -->
+                  
+                  <div class="col-md-3 mt-2">                    
+                      <div class="card" style="width:100%;">
+                        <img src="{{ product.pimage.url }}" width="20px" class="card-img-top"  alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          <p class="card-text">{{ product.details }}</p>
+                          {% if p.cat == 1 %}
+                          <p class="card-text">Cricket</p>
+                          {% elif p.cat == 2 %}
+                          <p class="card-text">Football</p>
+                          {% else %}
+                          <p class="card-text">Swimming</p>
+                          {% endif %}
+                          <strong>Rs.{{ product.price }}</strong><br>
+                          <a href="/addtocart/{{product.id}}" class="btn btn-danger m-1">Add To Cart</a><br>   
+                          <a href="/mycart" class="btn btn-danger m-1">View Cart</a><br>   
+                          <a href="/home" class="btn btn-danger m-1">Back</a><br>                            
+                        </div>
+                      </div>                   
+                  </div> <!-- end of prod 1 -->   
+                          
+            </div>                         
+{% endblock 'main' %}
